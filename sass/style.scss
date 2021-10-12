@@ -1,0 +1,65 @@
+$black: #333538;
+$blue: #2374ab;
+
+@mixin mobile {
+    @media screen and (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: 500px) {
+        @content;
+    }
+}
+
+@font-face {
+    font-family: "VarelaRound";
+    font-display: optional;
+    src: url("VarelaRound-Regular.ttf") format("truetype");
+}
+
+header {
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    // font-family: "VarelaRound", "Lato", sans-serif;
+    font-family: "VarelaRound";
+    background-color: $blue;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+article {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    @include desktop {
+        .image {
+            grid-row: 1;
+            grid-column: 1;
+        }
+        .content {
+            .date {
+                border-bottom: 2px solid $black;
+                padding-left: 1em;
+            }
+            grid-row: 1;
+            grid-column: 2;
+        }
+    }
+
+    img {
+        width: 100%;
+        border: 2px solid $black;
+        border-radius: 5px;
+    }
+}

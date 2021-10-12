@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+  <h1>Chronicle</h1>
+</header>
+<main>
+  {% for page in section.pages %}
+  <article>
+
+    <div class="content">
+      <div class="date">{{ page.date }}</div>
+      {{ page.content | safe }}
+    </div>
+    {% set jpeg = page.relative_path ~ ".jpeg" %}
+    {% set image = resize_image(path=jpeg, width=400, height=400) %}
+    <div class="image">
+      <a href="{{ get_url(path=jpeg) }}" target="_blank">
+        <img src="{{ image.url }}" />
+      </a>
+    </div>
+  </article>
+  {% endfor %}
+</main>
+{% endblock content %}
